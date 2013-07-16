@@ -1,0 +1,29 @@
+# Copied from teach.github.com/blob/gh-pages/_config.yml
+# standard jekyll configuration
+
+permalink: /articles/:title
+pygments: true
+exclude: ['Rakefile', 'config.rb', 'README.md','gems']
+markdown: rdiscount
+
+# configuration required for some pages
+
+domain: area3001.com
+title: Area 3001 - Hackerspace Leuven
+author: Maker Monk 
+email: hackerspace.area.3001@gmail.com
+
+# configuration for enhancements, uncomment to enable
+
+# feedburner:
+#   id: feedburnerid
+
+# google_analytics:
+#   account: UA-XXXXX-X
+
+# Maker Monk: disable the accounts below 
+#github: 
+#    username: github/area3001.github.com
+
+#disqus:
+#    id: githubteachingmaterials
