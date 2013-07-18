@@ -17,11 +17,11 @@ categories: projects
 <p>Since the LED strips are rated at 8W per meter and we'll be using 200m, we'll need atleast 1600W of power. The strips require a steady 12V which is available on a ATX power supply. Using 3 or 4 recent ATX power supplies we should be able to meet the demand of the display.</p>
 
 <h3>Control Hardware</h3>
-<p><a href="http://www.embeddedartists.com/products/lpcxpresso/lpc1769_xpr.php">LPC1769 based LPCXPRESSO board</a> as an artnet slave, a PC as an artnet host. The LPCXPRESSO will require a small PCB for the ethernet jack and decent connections for the LED strips.</p>
+<p><a href="http://www.embeddedartists.com/products/lpcxpresso/lpc1769_xpr.php">LPC1769 based LPCXPRESSO board</a> as an <a href="http://en.wikipedia.org/wiki/Art-Net">Art-Net</a> slave, a PC as an Art-Net host. The LPCXPRESSO will require a small PCB for the ethernet jack and decent connections for the LED strips.</p>
 <p>Every LPCXPRESSO will feed 8 different strands in parallel with each strand being 2 or 3 columns, depending on the performance. 100 columns / 8 strands of 2 columns for each LPCXPRESSO = 7 LPCXPRESSO boards required. However, we still need to calculate if the LPC1769 is capable of driving 8 strands at a time.</p>
 
 <h3>Interface</h3>
-<p>Using the ethernet interface on the LPCXPRESSO boards to create an artnet interface we can decrease the cabling compared to DMX nodes for each column. The 8 different strands (which can contain more than 1 collumn) are connected in parallel to one port of the LPCEXPRESSO which should simplify programming and increase performance.</p>
+<p>Using the ethernet interface on the LPCXPRESSO boards to create an Art-Net interface we can decrease the cabling compared to DMX nodes for each column. The 8 different strands (which can contain more than 1 collumn) are connected in parallel to one port of the LPCEXPRESSO which should simplify programming and increase performance.</p>
 
 <h3>The Math</h3>
 <p>2m long columns with 60 LEDs requiring 3 bytes per LED = 180 bytes or 1440 bits. If we want 20 fps we will need 40kbps which translates to an IO speed of approximately 120kbps per column (as the driver does 3 I/O operations for each transmitted bit). Controlling more columns in series will require a multiple of 120kbps</p>
