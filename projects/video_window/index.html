@@ -1,0 +1,61 @@
+---
+layout: default
+title: LED Video Window
+showinnav: true 
+categories: projects
+---
+
+<h2>Setup</h2>
+
+<h3>The Windows</h3>
+<p>Fablab Leuven wants a LED wall installed on 2 windows of approximatly 2m height by 1.5m width.</p>
+
+<h3>Lights</h3>
+<p><a href="http://www.adafruit.com/datasheets/WS2801.pdf">WS2801 with seperate clock</a> is almost double the price of the <a href="http://www.adafruit.com/datasheets/WS2811.pdf">WS2811</a> based LED strips with 30 LEDs/m, 400 or 800kbps data rate. 30 LEDs/m results in 3cm spacing between rows and collumns. Resulting in a display of 100 collumns, each 2m in height for a total of 100 x 60 RGB pixels.</p>
+
+<h3>Control Hardware</h3>
+<p><a href="http://www.embeddedartists.com/products/lpcxpresso/lpc1769_xpr.php">LPC1769 based LPCXPRESSO board</a> as an artnet slave, a PC as an artnet host. The LPCXPRESSO will require a small PCB for the ethernet jack and decent connections for the LED strips.</p>
+<p>Every LPCXPRESSO will feed 8 different strands with each strand being 2 or 3 collumns, depending on the performance. 100 collumns / 8 strands of 2 collumns for each LPCXPRESSO = 7 LPCXPRESSO boards required. However, we still need to calculate if the LPC1769 is capable of driving 8 strands at a time.</p>
+
+<h3>Power</h3>
+<p>Since the LED strips are rated at 8W per meter and we'll be using 200m, we'll need 1600W of power. The strips require a steady 12V which is available on a ATX power supply. Using 3 or 4 recent ATX power supplies we should be able to meet the demand of the display.</p>
+
+<h2>The Preliminary Budget </h2>
+<table border="1">
+<tr>
+<td><b>Estimated Price</b></td>
+<td><b>Description</b></td>
+</tr>
+<tr>
+<td>&euro;1000</td>
+<td>50 x 5m WS28<b>1</b>1 based LED strip</td>
+</tr>
+<tr>
+<td>&euro;2000</td>
+<td>50 x 5m WS28<b>0</b>1 based LED strip</td>
+</tr>
+<tr>
+<td>&euro;140</td>
+<td>7 x Embedded Artist LPC1769 LPCXPRESSO</td>
+</tr>
+<tr>
+<td>&euro;15</td>
+<td><a href="http://imall.iteadstudio.com/open-pcb/pcb-prototyping/im120418001.html">10 x custom PCB 5x5 cm</a></td>
+</tr>
+<tr>
+<td>&euro;75</td>
+<td>Components for custom PCB</td>
+</tr>
+<tr>
+<td>&euro;0</td>
+<td>Scrap PSUs</td>
+</tr>
+<tr>
+<td>&euro;0</td>
+<td>Spare ethernet switch</td>
+</tr>
+<tr>
+<td>&euro;0</td>
+<td>Spare ethernet cable</td>
+</tr>
+</table> 
