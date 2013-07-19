@@ -31,6 +31,18 @@ categories: none
 	  {% endif %}
 	{% endfor %}
       </ul>
-
+  
+  <h3>Tutorials</h3>
+      <ul>
+	{% for page in site.html_pages %}
+	  {% if page.title %}
+	    {% if page.showinnav == true and page.categories contains "tutorial" %}
+	      <li><a href="{{ page.url | remove:'index.html' }}">{{ page.title }}</a></li>
+	    {% endif %}
+	  {% endif %}
+	{% endfor %}
+	<li>...</li>
+      </ul>
+      
   <h3>Support or Contact</h3>
     No time for support, no need for contact.
