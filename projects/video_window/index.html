@@ -29,14 +29,19 @@ categories: projects
 </tr>
 <tr>
 <td><a href="http://www.adafruit.com/datasheets/lpd8806%20english.pdf">LPD8806</a></td>
-<td>Cheaper than the WS2801, seperate clock up to 20MHz, can be controlled with <a href="http://opendmx.net/index.php/OLA">OLA</a>, 6 outputs</td>
+<td>Same price as the WS2801, seperate clock up to 20MHz, can be controlled with <a href="http://opendmx.net/index.php/OLA">OLA</a>, 6 outputs</td>
 </tr>
 </table>
 
 <p><a href="http://www.adafruit.com/datasheets/WS2801.pdf">WS2801 based strips with seperate clock</a> are almost double the price of the <a href="http://www.adafruit.com/datasheets/WS2811.pdf">WS2811</a> based LED strips with 30 LEDs/m, 400 or 800kbps data rate. 30 LEDs/m results in 3cm spacing between rows and columns. Resulting in a display of 100 columns, each 2m in height for a total of 100 x 60 RGB pixels.</p>
 
 <h3>Power</h3>
-<p>Since the LED strips are rated at 8W per meter and we'll be using 200m, we'll need atleast 1600W of power. The strips require a steady 12V which is available on a ATX power supply. Using 3 or 4 recent ATX power supplies we should be able to meet the demand of the display.</p>
+<p>Since the LED strips are rated at 10W per meter and we'll be using 210m, we'll need atleast 2100W of power. 
+The strips require a steady 5V which is available on a ATX power supply. 
+Using 3 or 4 recent ATX power supplies we should be able to meet the demand of the display.
+For a more energy efficient approach we can also buy dedicated 5V power supplies. 
+For example, a 5V 40A power supply would cost &euro;20.
+</p>
 
 <h3>Control Hardware</h3>
 <h4>Option 1</h4>
@@ -48,12 +53,14 @@ categories: projects
 
 
 <h3>Interface</h3>
-<p>Using the ethernet interface on the LPCXPRESSO boards to create an Art-Net interface we can decrease the cabling compared to DMX nodes for each column. The 8 different strands (which can contain more than 1 collumn) are connected in parallel to one port of the LPCEXPRESSO which should simplify programming and increase performance.</p>
+<p>Using the ethernet interface on the LPCXPRESSO or RasPi boards to create an Art-Net interface we can decrease the cabling compared to DMX nodes for each column. 
+The different strands (which can contain more than 1 row or collumn) are connected in parallel to one port of the LPCEXPRESSO or in series to the RasPi SPI interface which should simplify programming and increase performance.</p>
 
 
 <h3>The Math</h3>
 <p>7 times 1.4m wide columns with 42 LEDs requiring 3 bytes per LED = 126 bytes or 1008 bits. 
-If we want 20 fps we will need 40kbps which translates to an IO speed of approximately 120kbps per column (as the driver does 3 I/O operations for each transmitted bit). Controlling more columns in series will require a multiple of 120kbps</p>
+If we want 20 fps we will need 40kbps which translates to an IO speed of approximately 120kbps per column (as the driver does 3 I/O operations for each transmitted bit). Controlling more columns in series will require a multiple of 120kbps
+</p>
 
 <h2>The Preliminary Budget </h2>
 <table border="1">
@@ -62,11 +69,16 @@ If we want 20 fps we will need 40kbps which translates to an IO speed of approxi
 <td><b>Description</b></td>
 </tr>
 <tr>
-<td>&euro;1000</td>
+<td>&euro;1250</td>
 <td>50 x 5m WS28<b>1</b>1 based LED strip</td>
 </tr>
+</tr>
 <tr>
-<td>&euro;2000</td>
+<td>&euro;2500</td>
+<td>50 x 5m LPD8806 based LED strip</td>
+</tr>
+<tr>
+<td>&euro;2500</td>
 <td>50 x 5m WS28<b>0</b>1 based LED strip</td>
 </tr>
 <tr>
