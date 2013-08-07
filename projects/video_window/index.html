@@ -45,12 +45,21 @@ For example, a 5V 40A power supply would cost &euro;20.
 
 <h3>Control Hardware</h3>
 <h4>Option 1</h4>
-<p><a href="http://www.embeddedartists.com/products/lpcxpresso/lpc1769_xpr.php">LPC1769 based LPCXPRESSO board</a> as an <a href="http://en.wikipedia.org/wiki/Art-Net">Art-Net</a> slave, a PC as an Art-Net host. The LPCXPRESSO will require a small PCB for the ethernet jack and decent connections for the LED strips.</p>
-<p>Every LPCXPRESSO will feed 8 different strands in parallel with each strand being 2 or 3 columns, depending on the performance. 100 columns / 8 strands of 2 columns for each LPCXPRESSO = 7 LPCXPRESSO boards required. However, we still need to calculate if the LPC1769 is capable of driving 8 strands at a time.</p>
+<p><a href="http://www.embeddedartists.com/products/lpcxpresso/lpc1769_xpr.php">LPC1769 based LPCXPRESSO board</a> as an <a href="http://en.wikipedia.org/wiki/Art-Net">Art-Net</a> slave, a PC as an Art-Net host. 
+The LPCXPRESSO will require a small PCB for the ethernet jack and decent connections for the LED strips.</p>
+
+<p>Every LPCXPRESSO will feed 8 different strands in parallel with each strand being 2 or 3 columns, depending on the performance. 
+100 columns / 8 strands of 2 columns for each LPCXPRESSO = 7 LPCXPRESSO boards required. 
+However, we still need to calculate if the LPC1769 is capable of driving 8 strands at a time.</p>
 
 <h4>Option 2</h4>
-<p>Using Raspberry Pi microprocessor boards to drive the strands by <a href="http://opendmx.net/index.php/OLA_LED_Pixels">abusing the SPI interface</a>. The downside of this approach is the need for the more expensive WS2811 or LPD8806 based strips.</p>
+<p>Using Raspberry Pi microprocessor boards to drive the strands by <a href="http://opendmx.net/index.php/OLA_LED_Pixels">abusing the SPI interface</a>. 
+The downside of this approach is the need for the more expensive WS2811 or LPD8806 based strips.</p>
 
+
+<h3>Software</h3>
+<h4><a href="http://opendmx.net/index.php/OLA">OLA</a></h4>
+<p> <a href="http://opendmx.net/index.php/OLA_Raspberry_Pi">Getting OLA running on Raspberry Pi</a> and <a href="http://opendmx.net/index.php/OLA_LED_Pixels">interface the LEDs with the Raspberry Pi</a></p>
 
 <h3>Interface</h3>
 <p>Using the ethernet interface on the LPCXPRESSO or RasPi boards to create an Art-Net interface we can decrease the cabling compared to DMX nodes for each column. 
@@ -82,8 +91,8 @@ If we want 20 fps we will need 40kbps which translates to an IO speed of approxi
 <td>50 x 5m WS28<b>0</b>1 based LED strip</td>
 </tr>
 <tr>
-<td>&euro;140</td>
-<td>7 x Embedded Artist LPC1769 LPCXPRESSO</td>
+<td>&euro;0</td>
+<td>Raspberry Pi</td>
 </tr>
 <tr>
 <td>&euro;15</td>
