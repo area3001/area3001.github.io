@@ -123,3 +123,30 @@ If we want 20 fps we will need 40kbps which translates to an IO speed of approxi
   <li><a href="http://www.youtube.com/watch?v=c7GbKRInPFE">Ledgor led screen</a></li>
   <li><a href="http://www.youtube.com/watch?v=y8YYw42dfBI">Transparant screen</a></a></li>
 </ul>
+
+<h3>Installing OLA on Raspi</h3>
+
+<ul>
+  <li>Get yourself a Raspi (shame on you if you don't have one yet!)</li>
+  <li>Get yourself an SD card of at least 4GB</li>
+  <li>Download the OLA image: $wget http://nomis52.net/data/raspi/raspbian-ola-0.8.28.zip</li>
+  <li>Unzip the image: $unzip raspbian-ola-0.8.28.zip</li>
+  <li>You should now have a *.img file to work with</li>
+  <li>Install ImageWriter (or work with dd if you have it in your hands): $sudo apt-get install ImageWriter</li>
+  <li>Insert your SD card in your reader</li>
+  <li>umount all partitions related to the SD card: $sudo umount <look_this_up_with_mount></li>
+  <li>Select your image in the left selection box</li>
+  <li>Select your sd card in the right (/dev/sdx or /dev/mmcblk)</li>
+  <li>Press the Write button</li>
+  <li>When finished close the program, remove the card from your reader</li>
+  <li>Connect your Raspi to a network with DHCP server</li>
+  <li>Insert SD card in Raspi</li>
+  <li>Plug in the power of your Raspi</li>
+  <li>Check your DHCP server logs for the IP of th Raspi</li>
+  <li>Ssh to the device: $ssh pi@192.168.x.y</li>
+  <li>Passwd is 'openlighting'</li>
+  <li>Remove the existing ssh keys: rm .ssh/authorized_keys</li>
+  <li>Create your own ssh keys</li>
+  <li>If you have a SD card larger then 4GB you can expand your filesystem: $sudo raspi-config and then choose expaned_rootfs</li>
+  <li>You can now start using OLA</li>
+</ul>
