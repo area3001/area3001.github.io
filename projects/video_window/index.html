@@ -149,4 +149,19 @@ If we want 20 fps we will need 40kbps which translates to an IO speed of approxi
   <li>Create your own ssh keys</li>
   <li>If you have a SD card larger then 4GB you can expand your filesystem: $sudo raspi-config and then choose expaned_rootfs</li>
   <li>You can now start using OLA</li>
+  <li>Open Firefox and browse to the IP of your Raspi on port 9090</li>
+</ul>
+
+<h3>Using OLA</h3>
+
+<ul>
+  <li>Browse to your IP of your Raspi and port 9090</li>
+  <li>Check if the SPI plugin is active</li>
+  <li>The config is in /var/lib/ola/conf/ola-spi.conf on your Raspi, edit when needed with ssh and vim</li>
+  <li>Edit here on which port and how many LEDs you're using</li>
+  <li>On the webinterface, patch a SPI port to a Universe</li>
+  <li>In the RDM tab you can configure the type of LED module and start address</li>
+  
+  <li>Install glediator to control your LEDs via Artnet</li>
+  <li>Start playing and enjoy your LED show!</li>
 </ul>
