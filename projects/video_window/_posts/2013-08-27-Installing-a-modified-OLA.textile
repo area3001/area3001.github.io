@@ -1,0 +1,13 @@
+---
+layout: default 
+title: Compiling the modified OLA (OpenDMX) to steer more than 170 LEDS 
+---
+
+<p>Please also check out <a href="https://groups.google.com/forum/#!topic/open-lighting/QujGTIu3ihQ">Support for more than 170 SPI-driven pixels</a> for details on a chip-select and a software solution to the DMX 512 channel limit. Also states that the SPI could drive 2000 LEDS, that's way more than the 42*20 we need per window (making abstraction of the SW processing bottleneck btw). The codeproject is <a href="https://code.google.com/r/hypher-spimux/source/list">here</a></p>
+<p>Statements to compile on the Rasberry PI:</p>
+<ul>
+  <li> sudo apt-get install dh-autoreconf </li>
+  <li> autoreconf -f -i -Wall,no-obsolete </li>
+  <li> ./configure    (and install all packages necessary) </li>
+
+</ul>
