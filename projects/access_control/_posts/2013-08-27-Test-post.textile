@@ -1,6 +1,6 @@
 ---
 layout: default 
-title: Working on the LED Wall
+title: Not yet working on the access control
 ---
 
-Currenlty installing the compiling a openDMX OLA that could drive more than 170 LEDS.
+We need to get working on this.
