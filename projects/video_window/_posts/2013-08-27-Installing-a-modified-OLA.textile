@@ -10,5 +10,9 @@ title: Compiling the modified OLA (OpenDMX) to steer more than 170 LEDS
   <li> sudo apt-get install dh-autoreconf </li>
   <li> autoreconf -f -i -Wall,no-obsolete </li>
   <li> ./configure    (and install all packages necessary) </li>
-
+  <li> make </li>
 </ul>
+
+The make command takes ages... sooo.. we'll need to continu with it next time.
+
+Cheers !
