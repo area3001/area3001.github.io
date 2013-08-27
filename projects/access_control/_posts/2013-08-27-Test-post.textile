@@ -1,6 +1,6 @@
 ---
-layout: post
-title: Blogging Like a Hacker
+layout: default 
+title: Working on the LED Wall
 ---
 
-Hello 
+Currenlty installing the compiling a openDMX OLA that could drive more than 170 LEDS.
