@@ -9,6 +9,16 @@ published: true
 <h3>Welcome to Area 3001</h3>
     <p>Area 3001 is a hackerspace in Leuven, and was founded on the July 16, 2013. Yup, that's quite young.</p>
 
+  <h3>Posts<h3>
+
+    <ul>
+      {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
   <h3>Projects</h3>
     Feel free to browse and contribute to Area 3001 projects.
 
