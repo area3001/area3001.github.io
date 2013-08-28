@@ -1,0 +1,13 @@
+---
+layout: default 
+title: Compiling the modified OLA (OpenDMX) to steer more than 170 LEDS 
+---
+
+<p> See the previous post for the first part of the configure/make/make install trilogy.
+
+  <li> make             -> finally finished ! Man a RP compiles slow</li>
+  <li> make install     -> no complains</li>
+  <li> sudo service olad restart</li>
+  <li> No answer from the RP on 192.168.1.129:9090  , will have to look into this... bummer </li> 
+</ul>
+
