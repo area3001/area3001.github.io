@@ -1,0 +1,22 @@
+---
+layout: default 
+title: Success for more than 170 LEDS with adammhaile's RPi-LPD8806
+---
+
+<p> We had to take a new approach as we couldn't get opendmx/ola working well with more than 170 LEDS. Adammhaile's RPi-LPD8806 library (github.com/adammhaile/RPi-LPD8806) looked promising, so we tried that, and behold, it works, although slow.</p>
+
+<p> Slow meaning: way to slow. So, we changed the speed with @fcntl.ioctl(spidev, 0x40046b04, array.array('L', [4000000]))@. The speed is now 13 frames/s for the targeted number of LEDS, being 840. We wanted at least 25 frames/s, so we can do with 2 pi's / frame.</p>
+
+<p> Concerning the speed, maybe we can tried a python bindings for spi, e.g. https://github.com/doceme/py-spidev. Will this help?</p>
+
+TODO:
+<ul>
+  <li> install https://github.com/doceme/py-spidev or similar</li>
+  <li> check speed</li>
+  <li> order at least the components for two frames</li>
+  <li> make frame</li>
+  <li> make one (or half) frame run some eye-candy</li>
+  <li> make architecture (central node, broadcast?, timing?)</li>
+  <li> Make central node with preprocessed video</li> 
+</ul>
+
