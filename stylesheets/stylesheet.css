@@ -303,6 +303,15 @@ Full-Width Styles
   padding: 50px 10px 30px 10px;
 }
 
+#img_header {
+  position: relative;
+  margin: 0 auto;
+  max-width: 739px;
+  padding: 5px;
+  margin: 10px 0 10px 0;
+  border: 0px
+}
+
 #project_title {
   margin: 0;
   color: #fff;
