@@ -1,0 +1,16 @@
+---
+layout: default 
+title: Finally a fully working frame 
+---
+
+<p> We pumped up the speed to a theoretical 400 frames / sec (for 940 LEDS * three colors) with a home-brew C-program (thanks Bart). You can get it on the github repo - project luzz.</p>
+
+<p> We're now using processing for the image and video manipulation, and paho MQTT client for the MQTT communication both on the server. The client is completely C code for speed on the RPi. All code will be added to github soon of course.</p>  
+
+<p> A video of the first working frame (needs html5 browser, mp4 | ogg provided).</p> 
+<video width="320" height="240" controls>
+  <source src="/video/20140204_180127.mp4" type="video/mp4">
+  <source src="/video/20140204_180127.ogv" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+
