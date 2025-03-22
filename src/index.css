@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "MorePerfectDOSVGA";
+  src: url("/MorePerfectDOSVGA.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  background-color: black;
+}
+
+@import "tailwindcss";
+
+@theme {
+  --font-dos: "MorePerfectDOSVGA", "sans-serif";
+  --animate-blink: 1s blink steps(1) infinite;
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
