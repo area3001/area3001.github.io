@@ -42,6 +42,31 @@
   *::-webkit-scrollbar-corner {
     background: rgba(4, 10, 5, 0.95);
   }
+
+  [data-mode="plain"] * {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+
+  [data-mode="plain"] *::-webkit-scrollbar {
+    width: revert;
+    height: revert;
+  }
+
+  [data-mode="plain"] *::-webkit-scrollbar-track {
+    background: revert;
+    border: revert;
+  }
+
+  [data-mode="plain"] *::-webkit-scrollbar-thumb {
+    background: revert;
+    border: revert;
+    box-shadow: revert;
+  }
+
+  [data-mode="plain"] *::-webkit-scrollbar-corner {
+    background: revert;
+  }
 }
 
 @theme {
