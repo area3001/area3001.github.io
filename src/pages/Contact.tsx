@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import type { FormEvent } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
 type DumpCell =
   | { id: string; type: "junk"; value: string }
@@ -185,8 +185,10 @@ export default function Contact() {
   const [inputReady, setInputReady] = useState(false);
   const [cursorToken, setCursorToken] = useState("_");
   const [activePairId, setActivePairId] = useState<string | null>(null);
-  const [unlocked, setUnlocked] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [unlocked, setUnlocked] = useState(
+    () => new URLSearchParams(window.location.search).has("bypass")
+  );
+  const [formState, handleSubmit] = useForm("mwvykzjl");
   const gameOver = attemptsLeft <= 0 && !unlocked;
 
   const appendLog = useCallback((text: string) => {
@@ -207,7 +209,7 @@ export default function Contact() {
     setActivePairId(null);
     setBootCycle((current) => current + 1);
     setUnlocked(false);
-    setSubmitted(false);
+
   };
 
   useEffect(() => {
@@ -354,11 +356,6 @@ export default function Contact() {
     );
   };
 
-  const submitForm = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
     <section>
       <h1>Contact Terminal</h1>
@@ -420,7 +417,7 @@ export default function Contact() {
       </div>
 
       {unlocked ? (
-        <form onSubmit={submitForm} className="mt-4 flex flex-col gap-2">
+        <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-2">
           <label className="flex flex-col gap-1">
             Name
             <input
@@ -438,6 +435,7 @@ export default function Contact() {
               type="email"
               className="border border-[#7ee089] bg-black px-2 py-1 text-[#a8ffb5]"
             />
+            <ValidationError field="email" errors={formState.errors} />
           </label>
           <label className="flex flex-col gap-1">
             Message
@@ -447,14 +445,16 @@ export default function Contact() {
               rows={5}
               className="border border-[#7ee089] bg-black px-2 py-1 text-[#a8ffb5]"
             />
+            <ValidationError field="message" errors={formState.errors} />
           </label>
           <button
             type="submit"
-            className="w-fit cursor-pointer border border-[#7ee089] px-3 py-1"
+            disabled={formState.submitting}
+            className="w-fit cursor-pointer border border-[#7ee089] px-3 py-1 disabled:opacity-50"
           >
-            SEND MESSAGE
+            {formState.submitting ? "SENDING..." : "SEND MESSAGE"}
           </button>
-          {submitted ? <p>Message queued. We will get back to you soon.</p> : null}
+          {formState.succeeded ? <p>Message queued. We will get back to you soon.</p> : null}
         </form>
       ) : null}
     </section>
