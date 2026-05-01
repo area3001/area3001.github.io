@@ -185,11 +185,44 @@ export default function Contact() {
   const [inputReady, setInputReady] = useState(false);
   const [cursorToken, setCursorToken] = useState("_");
   const [activePairId, setActivePairId] = useState<string | null>(null);
+  const [showSuccessOverlay, setShowSuccessOverlay] = useState(false);
   const [unlocked, setUnlocked] = useState(
     () => new URLSearchParams(window.location.search).has("bypass")
   );
   const [formState, handleSubmit] = useForm("mwvykzjl");
   const gameOver = attemptsLeft <= 0 && !unlocked;
+  const mobileCells = [...puzzle.left.lines.flat(), ...puzzle.right.lines.flat()];
+  const glowBorderClass = "shadow-[0_0_0.3rem_currentColor]";
+  const glowBorderSoftClass = "shadow-[0_0_0.2rem_currentColor]";
+
+  useEffect(() => {
+    console.info(
+      `[TERMLINK DEBUG] Nice hacking skills. The current password is: ${puzzle.password}`
+    );
+  }, [puzzle.password]);
+
+  useEffect(() => {
+    if (unlocked) {
+      setShowSuccessOverlay(true);
+    }
+  }, [unlocked]);
+
+  useEffect(() => {
+    if (!showSuccessOverlay) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setShowSuccessOverlay(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [showSuccessOverlay]);
 
   const appendLog = useCallback((text: string) => {
     setLogs((current) => [
@@ -209,6 +242,7 @@ export default function Contact() {
     setActivePairId(null);
     setBootCycle((current) => current + 1);
     setUnlocked(false);
+    setShowSuccessOverlay(false);
 
   };
 
@@ -313,7 +347,7 @@ export default function Contact() {
           onMouseLeave={() => setCursorToken("_")}
           onFocus={() => setCursorToken(cell.value)}
           onBlur={() => setCursorToken("_")}
-          className="cursor-pointer text-left disabled:cursor-not-allowed"
+          className="cursor-pointer rounded px-1 py-0.5 text-left disabled:cursor-not-allowed"
         >
           <span className={isRemoved ? "opacity-40 line-through" : "hover:underline"}>
             {cell.value}
@@ -347,7 +381,7 @@ export default function Contact() {
           setCursorToken("_");
           setActivePairId(null);
         }}
-        className="cursor-pointer text-left hover:underline disabled:cursor-not-allowed disabled:opacity-45"
+        className="cursor-pointer rounded px-1 py-0.5 text-left hover:underline disabled:cursor-not-allowed disabled:opacity-45"
       >
         <span
           className={
@@ -373,26 +407,55 @@ export default function Contact() {
   };
 
   return (
-    <section>
+    <section className="space-y-2 pb-14 sm:space-y-3 sm:pb-0">
+      {showSuccessOverlay ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/92 p-4 backdrop-blur-[2px]">
+          <div className={`w-full max-w-2xl border border-current bg-black/95 p-5 sm:p-8 ${glowBorderClass}`}>
+            <p className="text-base sm:text-lg">&gt; ACCESS GRANTED</p>
+            <p className="mt-2 text-base sm:text-lg">&gt; VAULT SECURITY OVERRIDDEN</p>
+            <p className="mt-2 text-base sm:text-lg">
+              &gt; WELCOME, OPERATOR <span className="animate-blink">_</span>
+            </p>
+            <p className="mt-4 opacity-85">Contact form unlocked. Nice hack.</p>
+            <button
+              type="button"
+              onClick={() => setShowSuccessOverlay(false)}
+              className={`mt-5 cursor-pointer border border-current px-3 py-1.5 ${glowBorderSoftClass}`}
+            >
+              CONTINUE
+            </button>
+          </div>
+        </div>
+      ) : null}
+
       <h1>Contact Terminal</h1>
       <p>Bypass vault security to unlock the contact form.</p>
 
-      <div className="mt-4 border border-current p-3">
-        <p>ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL</p>
-        <p>ATTEMPTS LEFT: {attemptsLeft}</p>
-        <p>
-          {!inputReady
-            ? "STATUS: BOOTING"
-            : unlocked
-            ? "STATUS: ACCESS GRANTED"
-            : gameOver
-              ? "STATUS: TERMINAL LOCKED"
-              : "STATUS: PASSWORD REQUIRED"}
-        </p>
-        <p>{">"} CURSOR: {cursorToken}</p>
+      <div className="mt-4">
+        <div className="space-y-1.5 leading-tight sm:space-y-2">
+          <p>ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL</p>
+          <p>ATTEMPTS LEFT: {attemptsLeft}</p>
+          <p>
+            {!inputReady
+              ? "STATUS: BOOTING"
+              : unlocked
+              ? "STATUS: ACCESS GRANTED"
+              : gameOver
+                ? "STATUS: TERMINAL LOCKED"
+                : "STATUS: PASSWORD REQUIRED"}
+          </p>
+          <p>{">"} CURSOR: {cursorToken}</p>
+        </div>
 
-        <div className="mt-3 grid gap-4 sm:grid-cols-2">
-          <div className="grid gap-1">
+        <div className="mt-4 sm:hidden">
+          <div className={`flex max-h-[44dvh] flex-wrap gap-2.5 overflow-y-auto border border-current/60 p-3 ${glowBorderSoftClass}`}>
+            {mobileCells.map((cell) => renderCell(cell))}
+          </div>
+          <p className="mt-2.5 opacity-80">Tap words or bracket pairs.</p>
+        </div>
+
+        <div className="mt-4 hidden gap-5 sm:grid sm:grid-cols-2">
+          <div className="grid gap-1.5">
             {puzzle.left.lines.map((line, lineIndex) => (
               <p key={formatAddress(puzzle.left.baseAddress, lineIndex)} className="flex gap-2">
                 <span className="w-20 shrink-0">
@@ -402,7 +465,7 @@ export default function Contact() {
               </p>
             ))}
           </div>
-          <div className="grid gap-1">
+          <div className="grid gap-1.5">
             {puzzle.right.lines.map((line, lineIndex) => (
               <p key={formatAddress(puzzle.right.baseAddress, lineIndex)} className="flex gap-2">
                 <span className="w-20 shrink-0">
@@ -414,7 +477,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="mt-4 border border-current/60 p-2">
+        <div className={`mt-4 max-h-44 overflow-y-auto border border-current/60 p-3 ${glowBorderSoftClass}`}>
           <p>{">"} ATTEMPT LOG</p>
           {logs.map((entry) => (
             <p key={entry.id}>{entry.text}</p>
@@ -425,7 +488,7 @@ export default function Contact() {
           <button
             type="button"
             onClick={resetGame}
-            className="mt-3 cursor-pointer border border-current px-2 py-1"
+            className={`mt-4 cursor-pointer border border-current px-3 py-1.5 ${glowBorderSoftClass}`}
           >
             RESET TERMINAL
           </button>
@@ -433,40 +496,40 @@ export default function Contact() {
       </div>
 
       {unlocked ? (
-        <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-2">
-          <label className="flex flex-col gap-1">
+        <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">
+          <label className="flex flex-col gap-1.5">
             Name
             <input
               required
               name="name"
               type="text"
-              className="border border-current bg-black px-2 py-1 text-inherit"
+              className={`border border-current bg-black px-2 py-1.5 text-inherit ${glowBorderSoftClass}`}
             />
           </label>
-          <label className="flex flex-col gap-1">
+          <label className="flex flex-col gap-1.5">
             Email
             <input
               required
               name="email"
               type="email"
-              className="border border-current bg-black px-2 py-1 text-inherit"
+              className={`border border-current bg-black px-2 py-1.5 text-inherit ${glowBorderSoftClass}`}
             />
             <ValidationError field="email" errors={formState.errors} />
           </label>
-          <label className="flex flex-col gap-1">
+          <label className="flex flex-col gap-1.5">
             Message
             <textarea
               required
               name="message"
               rows={5}
-              className="border border-current bg-black px-2 py-1 text-inherit"
+              className={`border border-current bg-black px-2 py-1.5 text-inherit ${glowBorderSoftClass}`}
             />
             <ValidationError field="message" errors={formState.errors} />
           </label>
           <button
             type="submit"
             disabled={formState.submitting}
-            className="w-fit cursor-pointer border border-current px-3 py-1 disabled:opacity-50"
+            className={`w-fit cursor-pointer border border-current px-3 py-1 disabled:opacity-50 ${glowBorderSoftClass}`}
           >
             {formState.submitting ? "SENDING..." : "SEND MESSAGE"}
           </button>
