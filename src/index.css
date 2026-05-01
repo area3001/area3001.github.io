@@ -361,18 +361,35 @@ body:has(.crt-disabled) {
 }
 
 @media (max-width: 640px) {
+  body {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
   .crt-bezel {
-    width: calc(100% - 1rem);
-    border-radius: 1.15rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
   }
 
   .crt-screen {
-    border-radius: 1.1rem;
+    border: none;
+    border-radius: 0;
+    transform: none;
+    animation: none;
+    box-shadow: none;
   }
 
   .crt-content {
-    min-height: calc(100vh - 6rem);
-    max-height: calc(100vh - 6rem);
+    min-height: 100dvh;
+    max-height: 100dvh;
+    padding: 1rem;
+    transform: none;
+    animation: none;
   }
 
   .crt-toggle {
