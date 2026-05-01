@@ -45,7 +45,7 @@ function App() {
   const shellWrapClass = isCrt
     ? "min-h-dvh bg-[radial-gradient(circle_at_20%_15%,rgba(22,45,24,0.45),transparent_52%),radial-gradient(circle_at_80%_90%,rgba(14,38,29,0.38),transparent_60%),#050a05] font-dos flex items-center justify-center py-4"
     : isPlain
-    ? "min-h-dvh bg-gray-50 font-sans"
+    ? "min-h-dvh bg-white font-sans"
     : "min-h-dvh bg-black font-dos flex items-start justify-center py-0 sm:items-center sm:py-4";
 
   const bezelClass = isCrt
@@ -134,10 +134,10 @@ function App() {
                 <Button text="contact" hotkey="c" path="/contact" displayMode={displayMode} />
               </nav>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home displayMode={displayMode} />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path="/contact" element={<Contact displayMode={displayMode} />} />
               </Routes>
             </div>
           </div>

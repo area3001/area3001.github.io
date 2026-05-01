@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
+import type { DisplayMode } from "../types";
 
 type DumpCell =
   | { id: string; type: "junk"; value: string }
@@ -174,7 +175,7 @@ function splitPairValue(value: string): [string, string, string] {
   return [value[0], value.slice(1, -1), value[value.length - 1]];
 }
 
-export default function Contact() {
+export default function Contact({ displayMode }: { displayMode: DisplayMode }) {
   const [puzzle, setPuzzle] = useState(buildPuzzle);
   const [attemptsLeft, setAttemptsLeft] = useState(ATTEMPTS_MAX);
   const [logs, setLogs] = useState<LogEntry[]>([{ id: "boot", text: "> BOOTING TERMINAL..." }]);
@@ -405,6 +406,56 @@ export default function Contact() {
       </button>
     );
   };
+
+  if (displayMode === "plain") {
+    return (
+      <section>
+        <h1>Contact</h1>
+        {formState.succeeded ? (
+          <p>Message sent. We will get back to you soon.</p>
+        ) : (
+          <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-4">
+            <label className="flex flex-col gap-1">
+              Name
+              <input
+                required
+                name="name"
+                type="text"
+                className="border border-black px-2 py-1.5 bg-white text-black"
+              />
+            </label>
+            <label className="flex flex-col gap-1">
+              Email
+              <input
+                required
+                name="email"
+                type="email"
+                className="border border-black px-2 py-1.5 bg-white text-black"
+              />
+              <ValidationError field="email" errors={formState.errors} />
+            </label>
+            <label className="flex flex-col gap-1">
+              Message
+              <textarea
+                required
+                name="message"
+                rows={5}
+                className="border border-black px-2 py-1.5 bg-white text-black"
+              />
+              <ValidationError field="message" errors={formState.errors} />
+            </label>
+            <button
+              type="submit"
+              disabled={formState.submitting}
+              className="w-fit cursor-pointer border border-black px-4 py-1.5 bg-white text-black disabled:opacity-50"
+            >
+              {formState.submitting ? "Sending..." : "Send message"}
+            </button>
+          </form>
+        )}
+      </section>
+    );
+  }
 
   return (
     <section className="space-y-2 pb-14 sm:space-y-3 sm:pb-0">
