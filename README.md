@@ -71,6 +71,10 @@ src/
 - SPA rewrites are configured in `vercel.json` so all routes resolve to `index.html`.
 - Canonical URLs are managed at runtime in `src/components/Seo.tsx`.
 
+## Font
+
+This project uses the [More Perfect DOS VGA](https://laemeur.sdf.org/fonts/) font by LÆMEUR (`MorePerfectDOSVGA.ttf`). The original glyphs were designed by IBM and converted to TrueType by Zeh Fernando. More Perfect DOS VGA is free for all use, commercial and non-commercial.
+
 ## License
 
 No license is currently specified in this repository.
