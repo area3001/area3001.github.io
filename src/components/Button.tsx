@@ -33,9 +33,9 @@ export function Button({
         navigate(path);
         if (onClick) onClick();
       }}
-      className="hover:bg-white group hover:text-black cursor-pointer focus:bg-black focus:text-white focus:outline-8 outline-white"
+      className="group cursor-pointer outline-[#a8ffb5] hover:bg-[#a8ffb5] hover:text-black focus:bg-black focus:text-[#a8ffb5] focus:outline-8"
     >
-      <span className="bg-white group-hover:bg-black group-hover:text-white text-black mr-5 group-focus:bg-black group-focus:text-white">
+      <span className="mr-5 bg-[#a8ffb5] text-black group-hover:bg-black group-hover:text-[#a8ffb5] group-focus:bg-black group-focus:text-[#a8ffb5]">
         ({hotkey.toUpperCase()})
       </span>
       {text}
