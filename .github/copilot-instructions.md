@@ -5,12 +5,12 @@ These instructions define how Tailwind CSS should be written in this repository.
 ## Tailwind Consistency Rules
 
 - Prefer human-readable, consistent utility patterns over arbitrary one-off values.
-- Keep z-index on a clear scale. Prefer built-in tokens like `z-10`, `z-20`, `z-30`, `z-40`, `z-50` over mixed forms like `z-[1]`.
+- Keep z-index on a clear scale. Prefer built-in tokens like `z-10`, `z-20`, `z-30`, `z-40`, `z-50` over mixed forms like `z-1`.
 - Avoid redundant reset classes that do not change rendering in context.
 - Do not add combinations like `my-0 p-0 rounded-none bg-none border-none shadow-none` unless they are required by a variant, breakpoint, or state.
 - Keep color syntax consistent within a component. Do not mix unrelated styles like `bg-[rgba(...)]` with `text-[#...]` in the same block without reason.
 - Prefer one color style per component (for example hex + alpha slash, or semantic theme tokens).
-- Prefer CSS variables for project colors. Define color tokens centrally (for example in `:root`) and reference them in Tailwind with `var(--token)` (for example `text-[var(--crt-text)]`) instead of inline hex values.
+- Prefer CSS variables for project colors. Define color tokens centrally (for example in `:root`) and reference them in Tailwind with `var(--token)` (for example `text-(--crt-text)`) instead of inline hex values.
 - Use arbitrary values only when Tailwind scale values cannot express the intended result.
 - Avoid older/deprecated utility styles when modern Tailwind utilities exist and are equivalent.
 - Use typography utilities intentionally. Do not add values like `leading-6` unless they are required by design.
@@ -37,7 +37,7 @@ Use these concrete patterns as defaults during edits.
 ### Z-Index
 
 - Do: `z-10`, `z-20`, `z-30`, `z-40`, `z-50`
-- Don't: `z-[1]`, `z-[2]`, `z-[3]`
+- Don't: `z-1`, `z-2`, `z-3`
 
 ### Redundant Resets
 
@@ -49,7 +49,7 @@ Use these concrete patterns as defaults during edits.
 
 - Do: keep one style, e.g. `bg-[#040c05]/90 text-[#b8ffc2] border-[#8aff9c]/80`
 - Don't: mix styles without reason, e.g. `bg-[rgba(4,12,5,0.9)] text-[#b8ffc2]`
-- Do: move shared colors to CSS variables and use `bg-[var(--token)]`, `text-[var(--token)]`, `border-[var(--token)]`
+- Do: move shared colors to CSS variables and use `bg-(--token)`, `text-(--token)`, `border-(--token)`
 - Don't: repeat inline hex values across multiple class strings when they represent the same design token
 
 ### Typography

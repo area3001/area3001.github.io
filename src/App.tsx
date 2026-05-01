@@ -49,17 +49,17 @@ function App() {
     : "min-h-dvh bg-black font-dos flex items-start justify-center py-0 sm:items-center sm:py-4";
 
   const bezelClass = isCrt
-    ? "w-[min(980px,calc(100%-2rem))] my-4 p-[clamp(0.7rem,2.5vw,1.2rem)] rounded-[1.8rem] bg-[linear-gradient(140deg,var(--crt-bezel-start)_0%,var(--crt-bezel-mid)_42%,var(--crt-bezel-end)_100%)] border border-[var(--crt-bezel-border)] shadow-[0_1.2rem_2rem_rgba(0,0,0,0.55),0_0_0_1px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(250,255,249,0.12),inset_0_-0.6rem_1rem_rgba(0,0,0,0.35)] max-sm:w-full max-sm:m-0 max-sm:p-0 max-sm:border-none max-sm:rounded-none max-sm:bg-none max-sm:shadow-none"
+    ? "w-[min(980px,calc(100%-2rem))] my-4 p-[clamp(0.7rem,2.5vw,1.2rem)] rounded-[1.8rem] bg-[linear-gradient(140deg,var(--crt-bezel-start)_0%,var(--crt-bezel-mid)_42%,var(--crt-bezel-end)_100%)] border border-(--crt-bezel-border) shadow-[0_1.2rem_2rem_rgba(0,0,0,0.55),0_0_0_1px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(250,255,249,0.12),inset_0_-0.6rem_1rem_rgba(0,0,0,0.35)] max-sm:w-full max-sm:m-0 max-sm:p-0 max-sm:border-none max-sm:rounded-none max-sm:bg-none max-sm:shadow-none"
     : isPlain
     ? "w-full max-w-2xl mx-auto"
     : "w-full";
 
   const screenClass = isCrt
-    ? "relative overflow-hidden rounded-[2.2rem] border-2 border-[rgba(141,255,162,0.36)] bg-[radial-gradient(ellipse_at_center,rgba(20,45,23,0.18)_0%,rgba(2,8,2,0.96)_68%),var(--crt-screen-base)] shadow-[inset_0_0_2.6rem_rgba(37,255,105,0.14),inset_0_0_0.9rem_rgba(0,0,0,0.82),0_0.2rem_0.7rem_rgba(0,0,0,0.6)] [transform:perspective(1200px)_rotateX(0.8deg)] animate-crt-wobble before:content-[''] before:absolute before:inset-0 before:z-20 before:pointer-events-none before:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.01)_48%,rgba(0,0,0,0.25)_100%),repeating-linear-gradient(to_bottom,rgba(181,255,188,0.08)_0px,rgba(181,255,188,0.08)_1px,transparent_1px,transparent_4px),repeating-linear-gradient(to_right,rgba(255,0,0,0.03)_0px,rgba(255,0,0,0.03)_1px,rgba(0,255,255,0.02)_1px,rgba(0,255,255,0.02)_2px,transparent_2px,transparent_3px)] before:mix-blend-screen before:animate-scanline-drift after:content-[''] after:absolute after:inset-0 after:z-30 after:pointer-events-none after:bg-[radial-gradient(circle_at_50%_45%,transparent_35%,rgba(0,0,0,0.38)_100%),radial-gradient(circle_at_8%_0%,rgba(255,255,255,0.12),transparent_22%),radial-gradient(circle_at_92%_100%,rgba(255,255,255,0.06),transparent_20%)] max-sm:border-none max-sm:rounded-none max-sm:[transform:none] max-sm:animate-none max-sm:shadow-none"
+    ? "relative overflow-hidden rounded-[2.2rem] border-2 border-[rgba(141,255,162,0.36)] bg-[radial-gradient(ellipse_at_center,rgba(20,45,23,0.18)_0%,rgba(2,8,2,0.96)_68%),var(--crt-screen-base)] shadow-[inset_0_0_2.6rem_rgba(37,255,105,0.14),inset_0_0_0.9rem_rgba(0,0,0,0.82),0_0.2rem_0.7rem_rgba(0,0,0,0.6)] transform-[perspective(1200px)_rotateX(0.8deg)] animate-crt-wobble before:content-[''] before:absolute before:inset-0 before:z-20 before:pointer-events-none before:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.01)_48%,rgba(0,0,0,0.25)_100%),repeating-linear-gradient(to_bottom,rgba(181,255,188,0.08)_0px,rgba(181,255,188,0.08)_1px,transparent_1px,transparent_4px),repeating-linear-gradient(to_right,rgba(255,0,0,0.03)_0px,rgba(255,0,0,0.03)_1px,rgba(0,255,255,0.02)_1px,rgba(0,255,255,0.02)_2px,transparent_2px,transparent_3px)] before:mix-blend-screen before:animate-scanline-drift after:content-[''] after:absolute after:inset-0 after:z-30 after:pointer-events-none after:bg-[radial-gradient(circle_at_50%_45%,transparent_35%,rgba(0,0,0,0.38)_100%),radial-gradient(circle_at_8%_0%,rgba(255,255,255,0.12),transparent_22%),radial-gradient(circle_at_92%_100%,rgba(255,255,255,0.06),transparent_20%)] max-sm:border-none max-sm:rounded-none max-sm:transform-none max-sm:animate-none max-sm:shadow-none"
     : "relative overflow-hidden rounded-none border-none bg-none shadow-none";
 
   const contentClass = isCrt
-    ? "relative z-10 min-h-[min(78vh,760px)] max-h-[min(78vh,760px)] overflow-y-auto overflow-x-hidden p-[clamp(1rem,3vw,1.7rem)] text-[var(--crt-text)] [text-shadow:0_0_0.35rem_rgba(132,255,143,0.62),0_0_0.08rem_rgba(70,222,98,0.95)] [transform:scaleX(1.015)_scaleY(0.985)] animate-crt-content-warp max-sm:min-h-dvh max-sm:max-h-dvh max-sm:p-4 max-sm:[transform:none] max-sm:animate-none"
+    ? "relative z-10 min-h-[min(78vh,760px)] max-h-[min(78vh,760px)] overflow-y-auto overflow-x-hidden p-[clamp(1rem,3vw,1.7rem)] text-(--crt-text) [text-shadow:0_0_0.35rem_rgba(132,255,143,0.62),0_0_0.08rem_rgba(70,222,98,0.95)] transform-[scaleX(1.015)_scaleY(0.985)] animate-crt-content-warp max-sm:min-h-dvh max-sm:max-h-dvh max-sm:p-4 max-sm:transform-none max-sm:animate-none"
     : isPlain
     ? "relative z-10 px-6 py-10 text-base leading-relaxed text-gray-900"
     : "relative z-10 min-h-dvh max-h-dvh overflow-y-auto overflow-x-hidden p-4 text-white";
@@ -68,19 +68,19 @@ function App() {
     "text-base leading-[1.35] **:text-base **:leading-[1.35] [&_h1]:font-normal [&_h2]:font-normal [&_h3]:font-normal [&_h4]:font-normal [&_h5]:font-normal [&_h6]:font-normal [&_ul]:my-[0.9rem] [&_ul]:list-none [&_ul]:pl-0 [&_li]:my-1 [&_li]:before:content-['>_']";
 
   const aStyles = isCrt
-    ? "[&_a]:inline-block [&_a]:mx-[0.12rem] [&_a]:px-[0.28rem] [&_a]:border [&_a]:border-[var(--crt-border-75)] [&_a]:bg-[var(--crt-text)] [&_a]:text-black [&_a]:no-underline [&_a]:shadow-[0_0_0.25rem_rgba(124,255,145,0.28)] [&_a]:transition-[background-color,color,box-shadow,transform] [&_a]:duration-150 [&_a]:ease-linear [&_a:hover]:bg-black [&_a:hover]:text-[var(--crt-text)] [&_a:hover]:shadow-[0_0_0.42rem_rgba(124,255,145,0.45)] [&_a:focus-visible]:bg-black [&_a:focus-visible]:text-[var(--crt-text)] [&_a:focus-visible]:shadow-[0_0_0.42rem_rgba(124,255,145,0.45)] [&_a:focus-visible]:outline-none [&_a:active]:translate-y-px"
+    ? "[&_a]:inline-block [&_a]:mx-[0.12rem] [&_a]:px-[0.28rem] [&_a]:border [&_a]:border-(--crt-border-75) [&_a]:bg-(--crt-text) [&_a]:text-black [&_a]:no-underline [&_a]:shadow-[0_0_0.25rem_rgba(124,255,145,0.28)] [&_a]:transition-[background-color,color,box-shadow,transform] [&_a]:duration-150 [&_a]:ease-linear [&_a:hover]:bg-black [&_a:hover]:text-(--crt-text) [&_a:hover]:shadow-[0_0_0.42rem_rgba(124,255,145,0.45)] [&_a:focus-visible]:bg-black [&_a:focus-visible]:text-(--crt-text) [&_a:focus-visible]:shadow-[0_0_0.42rem_rgba(124,255,145,0.45)] [&_a:focus-visible]:outline-none [&_a:active]:translate-y-px"
     : isPlain
     ? "[&_a]:text-blue-700 [&_a]:underline [&_a:hover]:text-blue-900 [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-blue-600 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mb-2 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mb-1 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-3 [&_li]:my-1"
     : "[&_a]:inline-block [&_a]:mx-[0.12rem] [&_a]:px-[0.28rem] [&_a]:border [&_a]:border-white [&_a]:bg-white [&_a]:text-black [&_a]:no-underline [&_a:hover]:bg-black [&_a:hover]:text-white [&_a:focus-visible]:bg-black [&_a:focus-visible]:text-white [&_a:focus-visible]:outline-none [&_button]:border-white [&_input]:border-white [&_textarea]:border-white [&_input]:bg-black [&_textarea]:bg-black [&_input]:text-white [&_textarea]:text-white";
 
   const cogClass = isCrt
-    ? "border-[var(--crt-cog-border)] bg-[var(--crt-cog-bg)] text-[var(--crt-cog-text)] [text-shadow:0_0_0.3rem_rgba(132,255,143,0.55)] shadow-[0_0_0.45rem_rgba(83,255,110,0.25),inset_0_0_0.2rem_rgba(118,255,138,0.35)] hover:bg-[var(--crt-cog-bg-hover)] focus-visible:outline-[var(--crt-cog-text)]"
+    ? "border-(--crt-cog-border) bg-(--crt-cog-bg) text-(--crt-cog-text) [text-shadow:0_0_0.3rem_rgba(132,255,143,0.55)] shadow-[0_0_0.45rem_rgba(83,255,110,0.25),inset_0_0_0.2rem_rgba(118,255,138,0.35)] hover:bg-(--crt-cog-bg-hover) focus-visible:outline-(--crt-cog-text)"
     : isPlain
     ? "border-gray-400 bg-white text-gray-700 shadow-sm hover:bg-gray-100 focus-visible:outline-gray-500"
-    : "border-[var(--bw-cog-border)] bg-black text-[var(--bw-cog-text)] shadow-none hover:bg-[var(--bw-cog-bg-hover)] focus-visible:outline-[var(--bw-cog-text)]";
+    : "border-(--bw-cog-border) bg-black text-(--bw-cog-text) shadow-none hover:bg-(--bw-cog-bg-hover) focus-visible:outline-(--bw-cog-text)";
 
   const modalPanelClass = isCrt
-    ? "border-[var(--crt-border-75)] bg-[rgba(2,8,3,0.98)] text-[var(--crt-text)] shadow-[0_0_0.5rem_rgba(112,255,137,0.35)]"
+    ? "border-(--crt-border-75) bg-[rgba(2,8,3,0.98)] text-(--crt-text) shadow-[0_0_0.5rem_rgba(112,255,137,0.35)]"
     : isPlain
     ? "border-gray-300 bg-white text-black shadow-xl"
     : "border-white/50 bg-black text-white";
@@ -89,8 +89,8 @@ function App() {
     const selected = displayMode === id;
     if (isCrt)
       return selected
-        ? "border-[var(--crt-text)] bg-[var(--crt-text)] text-black"
-        : "border-[var(--crt-border-40)] hover:border-[var(--crt-text)]";
+        ? "border-(--crt-text) bg-(--crt-text) text-black"
+        : "border-(--crt-border-40) hover:border-(--crt-text)";
     if (isPlain)
       return selected
         ? "border-black bg-black text-white"
@@ -101,7 +101,7 @@ function App() {
   };
 
   const closeBtnClass = isCrt
-    ? "border-[var(--crt-border-40)] text-[var(--crt-text-60)] hover:border-[var(--crt-text)] hover:text-[var(--crt-text)]"
+    ? "border-(--crt-border-40) text-(--crt-text-60) hover:border-(--crt-text) hover:text-(--crt-text)"
     : isPlain
     ? "border-gray-300 text-gray-500 hover:border-black hover:text-black"
     : "border-white/30 text-white/60 hover:border-white hover:text-white";

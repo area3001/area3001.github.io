@@ -59,7 +59,7 @@ export function Button({
       }}
       className={`group cursor-pointer px-0.5 outline-offset-1 ${
         isCrt
-          ? "outline-[#a8ffb5] text-[#a8ffb5] [text-shadow:0_0_0.35rem_rgba(132,255,143,0.62),0_0_0.08rem_rgba(70,222,98,0.95)] hover:bg-[#a8ffb5] hover:text-black hover:[text-shadow:none] focus:bg-black focus:text-[#a8ffb5] focus:outline-2"
+          ? "outline-[#a8ffb5] text-[#a8ffb5] [text-shadow:0_0_0.35rem_rgba(132,255,143,0.62),0_0_0.08rem_rgba(70,222,98,0.95)] hover:bg-[#a8ffb5] hover:text-black hover:text-shadow-none focus:bg-black focus:text-[#a8ffb5] focus:outline-2"
           : "outline-white text-white hover:bg-white hover:text-black focus:bg-black focus:text-white focus:outline-2"
       }`}
     >
