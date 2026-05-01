@@ -1,0 +1,21 @@
+{
+  "name": "Area3001",
+  "short_name": "Area3001",
+  "description": "Area3001 creative hacker lab website",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050a05",
+  "theme_color": "#050a05",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

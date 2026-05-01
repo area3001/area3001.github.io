@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import { Seo } from "./components/Seo";
 
 function App() {
   const [crtEnabled, setCrtEnabled] = useState(
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <Router>
+      <Seo />
       <div className={`crt-bezel ${crtEnabled ? "" : "crt-disabled"}`}>
         <div className="crt-screen">
           <div className="crt-content mx-auto w-full max-w-3xl px-4 text-left">
