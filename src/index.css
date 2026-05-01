@@ -242,6 +242,27 @@ body:has(.crt-disabled) {
   color: white;
 }
 
+.crt-disabled .hack-bracket-active {
+  background: white;
+  color: black;
+  box-shadow: none;
+}
+
+.crt-disabled .crt-content input,
+.crt-disabled .crt-content textarea {
+  border-color: white !important;
+  color: white !important;
+  background: black !important;
+}
+
+.crt-disabled .crt-content button {
+  border-color: white !important;
+}
+
+.crt-disabled .crt-content [class*="border-["] {
+  border-color: white !important;
+}
+
 .crt-content ul {
   margin-block: 0.9rem;
   padding-left: 0;
