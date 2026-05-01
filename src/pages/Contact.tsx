@@ -349,9 +349,25 @@ export default function Contact() {
         }}
         className="cursor-pointer text-left hover:underline disabled:cursor-not-allowed disabled:opacity-45"
       >
-        <span className={isActivePair ? "hack-bracket-active" : "hack-bracket"}>{open}</span>
+        <span
+          className={
+            isActivePair
+              ? "opacity-100 bg-current text-black text-shadow-none shadow-[0_0_0.25rem_currentColor]"
+              : "opacity-80"
+          }
+        >
+          {open}
+        </span>
         <span>{middle}</span>
-        <span className={isActivePair ? "hack-bracket-active" : "hack-bracket"}>{close}</span>
+        <span
+          className={
+            isActivePair
+              ? "opacity-100 bg-current text-black text-shadow-none shadow-[0_0_0.25rem_currentColor]"
+              : "opacity-80"
+          }
+        >
+          {close}
+        </span>
       </button>
     );
   };
@@ -361,7 +377,7 @@ export default function Contact() {
       <h1>Contact Terminal</h1>
       <p>Bypass vault security to unlock the contact form.</p>
 
-      <div className="mt-4 border border-[#7ee089] p-3">
+      <div className="mt-4 border border-current p-3">
         <p>ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL</p>
         <p>ATTEMPTS LEFT: {attemptsLeft}</p>
         <p>
@@ -398,7 +414,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="mt-4 border border-[#7ee089]/50 p-2">
+        <div className="mt-4 border border-current/60 p-2">
           <p>{">"} ATTEMPT LOG</p>
           {logs.map((entry) => (
             <p key={entry.id}>{entry.text}</p>
@@ -409,7 +425,7 @@ export default function Contact() {
           <button
             type="button"
             onClick={resetGame}
-            className="mt-3 cursor-pointer border border-[#7ee089] px-2 py-1"
+            className="mt-3 cursor-pointer border border-current px-2 py-1"
           >
             RESET TERMINAL
           </button>
@@ -424,7 +440,7 @@ export default function Contact() {
               required
               name="name"
               type="text"
-              className="border border-[#7ee089] bg-black px-2 py-1 text-[#a8ffb5]"
+              className="border border-current bg-black px-2 py-1 text-inherit"
             />
           </label>
           <label className="flex flex-col gap-1">
@@ -433,7 +449,7 @@ export default function Contact() {
               required
               name="email"
               type="email"
-              className="border border-[#7ee089] bg-black px-2 py-1 text-[#a8ffb5]"
+              className="border border-current bg-black px-2 py-1 text-inherit"
             />
             <ValidationError field="email" errors={formState.errors} />
           </label>
@@ -443,14 +459,14 @@ export default function Contact() {
               required
               name="message"
               rows={5}
-              className="border border-[#7ee089] bg-black px-2 py-1 text-[#a8ffb5]"
+              className="border border-current bg-black px-2 py-1 text-inherit"
             />
             <ValidationError field="message" errors={formState.errors} />
           </label>
           <button
             type="submit"
             disabled={formState.submitting}
-            className="w-fit cursor-pointer border border-[#7ee089] px-3 py-1 disabled:opacity-50"
+            className="w-fit cursor-pointer border border-current px-3 py-1 disabled:opacity-50"
           >
             {formState.submitting ? "SENDING..." : "SEND MESSAGE"}
           </button>
