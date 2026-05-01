@@ -16,6 +16,8 @@ export function Button({
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
+      const tag = (event.target as HTMLElement).tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
       if (event.key.toLowerCase() === hotkey.toLowerCase()) {
         navigate(path);
       }
