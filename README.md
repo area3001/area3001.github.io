@@ -1,54 +1,76 @@
-# React + TypeScript + Vite
+# Area3001 Home
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Area3001 Home is the main website for Area3001, built as a retro CRT-style single page app with multiple routes.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19
+- TypeScript
+- Vite
+- React Router
+- Tailwind CSS v4
+- Formspree (contact form submission)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- CRT-themed shell with toggleable effects (persisted in localStorage)
+- Keyboard shortcuts for route navigation:
+  - H: Home
+  - P: Projects
+  - A: About
+  - C: Contact
+- Route-based SEO metadata management (title, description, Open Graph, Twitter, canonical)
+- Terminal-style contact page with a mini-game unlock flow
+- Mobile responsive layout
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Getting Started
+
+### 1. Install dependencies
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Run locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+The app will be available at the local Vite URL (usually http://localhost:5173).
+
+## Scripts
+
+```bash
+npm run dev      # start development server
+npm run build    # type-check + production build
+npm run lint     # run eslint
+npm run preview  # preview production build
+```
+
+## Project Structure
+
+```text
+src/
+  App.tsx            # app shell, routes, CRT wrapper, navigation menu
+  index.css          # global CRT styling and responsive behavior
+  main.tsx           # React app entry point
+  components/
+    Button.tsx       # nav button with keyboard hotkeys
+    Logo.tsx         # site logo
+    Seo.tsx          # route-based SEO meta and canonical tags
+  pages/
+    Home.tsx
+    Projects.tsx
+    About.tsx
+    Contact.tsx
+```
+
+## Deployment Notes
+
+- SPA rewrites are configured in `vercel.json` so all routes resolve to `index.html`.
+- Canonical URLs are managed at runtime in `src/components/Seo.tsx`.
+
+## License
+
+No license is currently specified in this repository.
