@@ -8,6 +8,28 @@
 }
 
 @layer base {
+  :root {
+    --crt-shell-bg: #050a05;
+    --crt-bezel-start: #474c45;
+    --crt-bezel-mid: #181e18;
+    --crt-bezel-end: #363d35;
+    --crt-bezel-border: #575f58;
+    --crt-screen-base: #030503;
+    --crt-text: #a8ffb5;
+    --crt-cog-text: #b8ffc2;
+    --bw-cog-text: #cdd4ce;
+
+    --crt-cog-border: rgb(138 255 156 / 0.8);
+    --crt-cog-bg: rgb(4 12 5 / 0.9);
+    --crt-cog-bg-hover: rgb(10 28 12 / 0.95);
+    --bw-cog-border: rgb(192 204 194 / 0.65);
+    --bw-cog-bg-hover: rgb(20 20 20 / 0.9);
+
+    --crt-border-75: rgb(168 255 181 / 0.75);
+    --crt-border-40: rgb(168 255 181 / 0.4);
+    --crt-text-60: rgb(168 255 181 / 0.6);
+  }
+
   body {
     margin: 0;
   }
