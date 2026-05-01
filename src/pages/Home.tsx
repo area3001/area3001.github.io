@@ -4,8 +4,7 @@ export default function Home() {
   return (
     <div>
       <Logo />
-      <h1>Home Page</h1>
-      <p>Welcome to the Home Page!</p>
+      <p>Hacking the planet since July 16th, 2013</p>
     </div>
   );
 }

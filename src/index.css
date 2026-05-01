@@ -18,10 +18,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "MorePerfectDOSVGA", sans-serif;
+  font-size: 16px;
+  line-height: 1.35;
   background:
     radial-gradient(circle at 20% 15%, rgba(22, 45, 24, 0.45), transparent 52%),
     radial-gradient(circle at 80% 90%, rgba(14, 38, 29, 0.38), transparent 60%),
     #050a05;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 #root {
@@ -108,6 +118,9 @@ body {
   position: relative;
   z-index: 1;
   min-height: min(78vh, 760px);
+  max-height: min(78vh, 760px);
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: clamp(1rem, 3vw, 1.7rem);
   color: #a8ffb5;
   text-shadow:
@@ -115,6 +128,22 @@ body {
     0 0 0.08rem rgba(70, 222, 98, 0.95);
   transform: scaleX(1.015) scaleY(0.985);
   animation: crtContentWarp 4.6s ease-in-out infinite;
+}
+
+.crt-content,
+.crt-content * {
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.crt-content h1,
+.crt-content h2,
+.crt-content h3,
+.crt-content h4,
+.crt-content h5,
+.crt-content h6 {
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 body:has(.crt-disabled) {
@@ -170,6 +199,75 @@ body:has(.crt-disabled) {
   color: white !important;
 }
 
+.crt-content a {
+  display: inline-block;
+  margin-inline: 0.12rem;
+  padding-inline: 0.28rem;
+  border: 1px solid rgba(168, 255, 181, 0.75);
+  background: #a8ffb5;
+  color: #000;
+  text-decoration: none;
+  text-shadow: none;
+  box-shadow: 0 0 0.25rem rgba(124, 255, 145, 0.28);
+  transition:
+    background-color 0.14s steps(2, end),
+    color 0.14s steps(2, end),
+    box-shadow 0.14s linear,
+    transform 0.12s ease;
+}
+
+.crt-content a:hover,
+.crt-content a:focus-visible {
+  background: #000;
+  color: #a8ffb5;
+  text-decoration: none;
+  box-shadow: 0 0 0.42rem rgba(124, 255, 145, 0.45);
+  outline: none;
+}
+
+.crt-content a:active {
+  transform: translateY(1px);
+}
+
+.crt-disabled .crt-content a {
+  border-color: white;
+  background: white;
+  color: black;
+  box-shadow: none;
+}
+
+.crt-disabled .crt-content a:hover,
+.crt-disabled .crt-content a:focus-visible {
+  background: black;
+  color: white;
+}
+
+.crt-content ul {
+  margin-block: 0.9rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.crt-content li {
+  margin-block: 0.25rem;
+}
+
+.crt-content li::before {
+  content: "> ";
+}
+
+.hack-bracket {
+  opacity: 0.8;
+}
+
+.hack-bracket-active {
+  opacity: 1;
+  background: #a8ffb5;
+  color: #000;
+  text-shadow: none;
+  box-shadow: 0 0 0.25rem rgba(124, 255, 145, 0.35);
+}
+
 .crt-toggle {
   position: fixed;
   right: 1rem;
@@ -181,7 +279,7 @@ body:has(.crt-disabled) {
   color: #b8ffc2;
   padding: 0.35rem 0.7rem;
   line-height: 1;
-  font-size: 0.75rem;
+  font-size: 1rem;
   letter-spacing: 0.06em;
   text-shadow: 0 0 0.3rem rgba(132, 255, 143, 0.55);
   box-shadow:
@@ -253,6 +351,7 @@ body:has(.crt-disabled) {
 
   .crt-content {
     min-height: calc(100vh - 6rem);
+    max-height: calc(100vh - 6rem);
   }
 
   .crt-toggle {

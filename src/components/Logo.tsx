@@ -36,7 +36,7 @@ export function Logo() {
     }, 0);
   }, []);
   return (
-    <div className="whitespace-pre">
+    <div className="whitespace-pre pb-5">
       <span>{logo.slice(0, textIndex)}</span>
       {textIndex !== logo.length && (
         <span className="invisible">{logo.slice(textIndex)}</span>
