@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useForm, ValidationError } from "@formspree/react";
 import type { DisplayMode } from "../types";
 
@@ -195,6 +196,17 @@ export default function Contact({ displayMode }: { displayMode: DisplayMode }) {
   const mobileCells = [...puzzle.left.lines.flat(), ...puzzle.right.lines.flat()];
   const glowBorderClass = "shadow-[0_0_0.3rem_currentColor]";
   const glowBorderSoftClass = "shadow-[0_0_0.2rem_currentColor]";
+  const isCrt = displayMode === "crt";
+  // Match the exact terminal text glow so clickable cells render identically to regular text.
+  const textGlow = isCrt
+    ? "font-dos [text-shadow:0_0_0.35rem_rgba(132,255,143,0.62),0_0_0.08rem_rgba(70,222,98,0.95)]"
+    : "font-dos";
+  // Hover/focus only adds an underline — the glow stays identical in every state.
+  const wordHoverClass =
+    "enabled:hover:underline enabled:focus-visible:underline focus-visible:outline-none";
+  const overlayTone = isCrt
+    ? "text-[#a8ffb5] [text-shadow:0_0_0.35rem_rgba(132,255,143,0.62),0_0_0.08rem_rgba(70,222,98,0.95)]"
+    : "text-white";
 
   useEffect(() => {
     console.info(
@@ -348,9 +360,9 @@ export default function Contact({ displayMode }: { displayMode: DisplayMode }) {
           onMouseLeave={() => setCursorToken("_")}
           onFocus={() => setCursorToken(cell.value)}
           onBlur={() => setCursorToken("_")}
-          className="cursor-pointer rounded px-1 py-0.5 text-left disabled:cursor-not-allowed"
+          className={`cursor-pointer px-1 py-0.5 text-left disabled:cursor-not-allowed ${textGlow} ${wordHoverClass}`}
         >
-          <span className={isRemoved ? "opacity-40 line-through" : "hover:underline"}>
+          <span className={isRemoved ? "opacity-40 line-through" : ""}>
             {cell.value}
           </span>
         </button>
@@ -382,7 +394,7 @@ export default function Contact({ displayMode }: { displayMode: DisplayMode }) {
           setCursorToken("_");
           setActivePairId(null);
         }}
-        className="cursor-pointer rounded px-1 py-0.5 text-left hover:underline disabled:cursor-not-allowed disabled:opacity-45"
+        className={`cursor-pointer px-1 py-0.5 text-left enabled:hover:underline focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-45 ${textGlow}`}
       >
         <span
           className={
@@ -459,25 +471,30 @@ export default function Contact({ displayMode }: { displayMode: DisplayMode }) {
 
   return (
     <section className="space-y-2 pb-14 sm:space-y-3 sm:pb-0">
-      {showSuccessOverlay ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/92 p-4 backdrop-blur-[2px]">
-          <div className={`w-full max-w-2xl border border-current bg-black/95 p-5 sm:p-8 ${glowBorderClass}`}>
-            <p className="text-base sm:text-lg">&gt; ACCESS GRANTED</p>
-            <p className="mt-2 text-base sm:text-lg">&gt; VAULT SECURITY OVERRIDDEN</p>
-            <p className="mt-2 text-base sm:text-lg">
-              &gt; WELCOME, OPERATOR <span className="animate-blink">_</span>
-            </p>
-            <p className="mt-4 opacity-85">Contact form unlocked. Nice hack.</p>
-            <button
-              type="button"
-              onClick={() => setShowSuccessOverlay(false)}
-              className={`mt-5 cursor-pointer border border-current px-3 py-1.5 ${glowBorderSoftClass}`}
+      {showSuccessOverlay
+        ? createPortal(
+            <div
+              className={`absolute inset-0 z-40 flex items-center justify-center bg-black/92 p-4 font-dos text-base backdrop-blur-[2px] ${overlayTone}`}
             >
-              CONTINUE
-            </button>
-          </div>
-        </div>
-      ) : null}
+              <div className={`w-full max-w-md border border-current bg-black/95 p-5 sm:p-6 ${glowBorderClass}`}>
+                <p>&gt; ACCESS GRANTED</p>
+                <p className="mt-2">&gt; VAULT SECURITY OVERRIDDEN</p>
+                <p className="mt-2">
+                  &gt; WELCOME, OPERATOR <span className="animate-blink">_</span>
+                </p>
+                <p className="mt-4 opacity-85">Contact form unlocked. Nice hack.</p>
+                <button
+                  type="button"
+                  onClick={() => setShowSuccessOverlay(false)}
+                  className={`mt-5 cursor-pointer border border-current px-3 py-1.5 ${glowBorderSoftClass}`}
+                >
+                  CONTINUE
+                </button>
+              </div>
+            </div>,
+            document.getElementById("crt-screen") ?? document.body
+          )
+        : null}
 
       <h1>Contact Terminal</h1>
       <p>Bypass vault security to unlock the contact form.</p>

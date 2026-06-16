@@ -55,11 +55,11 @@ function App() {
     : "w-full";
 
   const screenClass = isCrt
-    ? "relative overflow-hidden rounded-[2.2rem] border-2 border-[rgba(141,255,162,0.36)] bg-[radial-gradient(ellipse_at_center,rgba(20,45,23,0.18)_0%,rgba(2,8,2,0.96)_68%),var(--crt-screen-base)] shadow-[inset_0_0_2.6rem_rgba(37,255,105,0.14),inset_0_0_0.9rem_rgba(0,0,0,0.82),0_0.2rem_0.7rem_rgba(0,0,0,0.6)] transform-[perspective(1200px)_rotateX(0.8deg)] animate-crt-wobble before:content-[''] before:absolute before:inset-0 before:z-20 before:pointer-events-none before:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.01)_48%,rgba(0,0,0,0.25)_100%),repeating-linear-gradient(to_bottom,rgba(181,255,188,0.08)_0px,rgba(181,255,188,0.08)_1px,transparent_1px,transparent_4px),repeating-linear-gradient(to_right,rgba(255,0,0,0.03)_0px,rgba(255,0,0,0.03)_1px,rgba(0,255,255,0.02)_1px,rgba(0,255,255,0.02)_2px,transparent_2px,transparent_3px)] before:mix-blend-screen before:animate-scanline-drift after:content-[''] after:absolute after:inset-0 after:z-30 after:pointer-events-none after:bg-[radial-gradient(circle_at_50%_45%,transparent_35%,rgba(0,0,0,0.38)_100%),radial-gradient(circle_at_8%_0%,rgba(255,255,255,0.12),transparent_22%),radial-gradient(circle_at_92%_100%,rgba(255,255,255,0.06),transparent_20%)] max-sm:border-none max-sm:rounded-none max-sm:transform-none max-sm:animate-none max-sm:shadow-none"
+    ? "relative overflow-hidden rounded-[2.2rem] border-2 border-[rgba(141,255,162,0.36)] bg-[radial-gradient(ellipse_at_center,rgba(20,45,23,0.18)_0%,rgba(2,8,2,0.96)_68%),var(--crt-screen-base)] shadow-[inset_0_0_2.6rem_rgba(37,255,105,0.14),inset_0_0_0.9rem_rgba(0,0,0,0.82),0_0.2rem_0.7rem_rgba(0,0,0,0.6)] transform-[perspective(1200px)_rotateX(0.8deg)] before:content-[''] before:absolute before:inset-0 before:z-20 before:pointer-events-none before:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.01)_48%,rgba(0,0,0,0.25)_100%),repeating-linear-gradient(to_bottom,rgba(181,255,188,0.08)_0px,rgba(181,255,188,0.08)_1px,transparent_1px,transparent_4px),repeating-linear-gradient(to_right,rgba(255,0,0,0.03)_0px,rgba(255,0,0,0.03)_1px,rgba(0,255,255,0.02)_1px,rgba(0,255,255,0.02)_2px,transparent_2px,transparent_3px)] before:mix-blend-screen after:content-[''] after:absolute after:inset-0 after:z-30 after:pointer-events-none after:bg-[radial-gradient(circle_at_50%_45%,transparent_35%,rgba(0,0,0,0.38)_100%),radial-gradient(circle_at_8%_0%,rgba(255,255,255,0.12),transparent_22%),radial-gradient(circle_at_92%_100%,rgba(255,255,255,0.06),transparent_20%)] max-sm:border-none max-sm:rounded-none max-sm:transform-none max-sm:animate-none max-sm:shadow-none"
     : "relative overflow-hidden rounded-none border-none bg-none shadow-none";
 
   const contentClass = isCrt
-    ? "relative z-10 min-h-[min(78vh,760px)] max-h-[min(78vh,760px)] overflow-y-auto overflow-x-hidden p-[clamp(1rem,3vw,1.7rem)] text-(--crt-text) [text-shadow:0_0_0.35rem_rgba(132,255,143,0.62),0_0_0.08rem_rgba(70,222,98,0.95)] transform-[scaleX(1.015)_scaleY(0.985)] animate-crt-content-warp max-sm:min-h-dvh max-sm:max-h-dvh max-sm:p-4 max-sm:transform-none max-sm:animate-none"
+    ? "relative z-10 min-h-[min(78vh,760px)] max-h-[min(78vh,760px)] overflow-y-auto overflow-x-hidden p-[clamp(1rem,3vw,1.7rem)] text-(--crt-text) [text-shadow:0_0_0.35rem_rgba(132,255,143,0.62),0_0_0.08rem_rgba(70,222,98,0.95)] transform-[scaleX(1.015)_scaleY(0.985)] max-sm:min-h-dvh max-sm:max-h-dvh max-sm:p-4 max-sm:transform-none max-sm:animate-none"
     : isPlain
     ? "relative z-10 px-6 py-10 text-base leading-relaxed text-gray-900"
     : "relative z-10 min-h-dvh max-h-dvh overflow-y-auto overflow-x-hidden p-4 text-white";
@@ -111,7 +111,7 @@ function App() {
       <Seo />
       <div className={shellWrapClass}>
         <div className={bezelClass}>
-          <div className={screenClass}>
+          <div id="crt-screen" className={screenClass}>
             <div
               className={`${contentClass} ${
                 isPlain

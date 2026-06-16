@@ -94,9 +94,6 @@
 @theme {
   --font-dos: "MorePerfectDOSVGA", "sans-serif";
   --animate-blink: 1s blink steps(1) infinite;
-  --animate-crt-wobble: crtWobble 4.6s ease-in-out infinite;
-  --animate-crt-content-warp: crtContentWarp 4.6s ease-in-out infinite;
-  --animate-scanline-drift: scanlineDrift 7s linear infinite;
 
   @keyframes blink {
     0% {
@@ -110,38 +107,4 @@
     }
   }
 
-  @keyframes crtWobble {
-    0%,
-    100% {
-      transform: perspective(1200px) rotateX(0.8deg) rotateY(-0.35deg);
-    }
-    35% {
-      transform: perspective(1200px) rotateX(1deg) rotateY(0.18deg) translateY(-0.4px);
-    }
-    70% {
-      transform: perspective(1200px) rotateX(0.65deg) rotateY(-0.12deg) translateY(0.4px);
-    }
-  }
-
-  @keyframes crtContentWarp {
-    0%,
-    100% {
-      transform: scaleX(1.015) scaleY(0.985) translateX(-0.4px);
-    }
-    40% {
-      transform: scaleX(1.02) scaleY(0.982) translateX(0.4px);
-    }
-    75% {
-      transform: scaleX(1.01) scaleY(0.988) translateX(-0.2px);
-    }
-  }
-
-  @keyframes scanlineDrift {
-    0% {
-      transform: translateY(-1.5%);
-    }
-    100% {
-      transform: translateY(1.5%);
-    }
-  }
 }

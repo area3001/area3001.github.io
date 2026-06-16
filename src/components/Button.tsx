@@ -66,7 +66,7 @@ export function Button({
       <span
         className={`mr-5 ${
           isCrt
-            ? "bg-[#a8ffb5] text-black group-hover:bg-black group-hover:text-[#a8ffb5] group-focus:bg-black group-focus:text-[#a8ffb5]"
+            ? ""
             : "bg-white text-black group-hover:bg-black group-hover:text-white group-focus:bg-black group-focus:text-white"
         }`}
       >
